@@ -1,0 +1,21 @@
+{
+  "name": "lmsdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@quasar/extras": "^1.17.0",
+    "@quasar/vite-plugin": "^1.9.0",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "quasar": "^2.18.1",
+    "vite": "^4.5.3",
+    "vue": "^3.5.17"
+  }
+}
