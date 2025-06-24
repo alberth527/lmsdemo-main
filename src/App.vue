@@ -95,7 +95,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useQuasar } from 'quasar'
 import Login from './components/Login.vue'
 import Dashboard from './components/Dashboard.vue'
@@ -170,18 +170,63 @@ function handleExchange(exchangeData) {
   }, 500)
 }
 
-// 在組件掛載時檢查登入狀態
-if (user.value) {
-  $q.notify({
-    type: 'info',
-    message: `歡迎回來，${user.value.username}！`,
-    position: 'top'
-  })
-}
+// 在組件掛載後檢查登入狀態
+onMounted(() => {
+  if (user.value) {
+    $q.notify({
+      type: 'info',
+      message: `歡迎回來，${user.value.username}！`,
+      position: 'top'
+    })
+  }
+})
 </script>
 
 <style>
 body, #q-app {
   min-height: 100vh;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* 自定義漸變背景類 */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+/* 陰影效果 */
+.shadow-1 {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+/* 圓角邊框 */
+.rounded-borders {
+  border-radius: 8px;
+}
+
+/* 響應式字體大小 */
+@media (max-width: 600px) {
+  .text-h4 {
+    font-size: 1.5rem !important;
+  }
+  
+  .text-h6 {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* 載入動畫 */
+.q-inner-loading {
+  backdrop-filter: blur(2px);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* 標籤頁樣式優化 */
+.q-tab {
+  text-transform: none;
+  font-weight: 500;
+}
+
+.q-tab--active {
+  font-weight: 600;
 }
 </style>

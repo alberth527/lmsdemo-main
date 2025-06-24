@@ -1,13 +1,23 @@
 import { createApp } from 'vue'
-import { Quasar } from 'quasar'
-import quasarIconSet from 'quasar/icon-set/svg-mdi-v7'
-import '@quasar/extras/mdi-v7/mdi-v7.css'
-import 'quasar/dist/quasar.css'
+import { Quasar, Notify, Dialog } from 'quasar'
 import App from './App.vue'
 
-createApp(App)
-  .use(Quasar, {
-    plugins: {},
-    iconSet: quasarIconSet
-  })
-  .mount('#app')
+// Import icon libraries
+import '@quasar/extras/material-icons/material-icons.css'
+
+// Import Quasar css
+import 'quasar/src/css/index.sass'
+
+const myApp = createApp(App)
+
+myApp.use(Quasar, {
+  plugins: {
+    Notify,
+    Dialog
+  },
+  config: {
+    notify: { /* look at QuasarConfOptions from the API card */ }
+  }
+})
+
+myApp.mount('#app')

@@ -37,8 +37,10 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useQuasar } from 'quasar'
 
 const emit = defineEmits(['login-success'])
+const $q = useQuasar()
 
 const loginForm = ref({ 
   username: '', 
